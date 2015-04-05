@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container2
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    P.login-text Login
+    form(role='form', action="/login",method="post")
+      .form-group
+          input(type='text', name="username", placeholder='Enter Username')
+      .form-group
+        input(type='password', name="password", placeholder='Password')
+      button(type='submit') Submit
+      &nbsp;
+      a(href='/')
+        button(type="button") Cancel

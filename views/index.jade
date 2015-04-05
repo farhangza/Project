@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .container
+    if (!user)
+      div.userneg
+        a(href="/login") Login
+        br
+        a(href="/register") Register
+    if (user)
+      div.layoutone
+        ul
+         li: a(href="#" class="username") #{user.username}
+         li: a.logout-link(href="/logout") Logout
+         li: a(href="#" onclick="Favourites()") Favourites
+         li: a(href="#" onclick="listcomments()") Comments
+      div.layouttwoz
+         .form-group
+             input(type='text', id= "searchvalue" name="username", placeholder='Movie Finder')
+             button(type="button", id = "searchbutton", onclick='search()') Search
+      div.layoutthree
+      div.layoutfour
