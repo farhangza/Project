@@ -9,10 +9,11 @@ var router = express.Router();
 router.get('/', function (req, res) {
     res.render('index', { user : req.user });
 });
-
+// API from passport.js requesting register
 router.get('/register', function(req, res) {
     res.render('register', { });
 });
+// Pasport.js --> post command with function name Account.register gathering username and password
 router.post('/register', function(req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
@@ -30,7 +31,7 @@ router.get('/login', function(req, res) {
 router.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
 });
-
+//log out from pasport.js ( passport express)
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
@@ -53,13 +54,14 @@ router.post('/movie', function(req, res) {
         if(err){
           res.json({message: "error"});
         }
+        //alert(movie_data.push(data));
         movie_data.push(data);
         res.json(movie_data);
       });
   });
 
 });
-
+//Comments for each movie, includes movie-id , use-id , visibility boolian and text body
 router.post('/movie/comment', function(req, res){
   var movie_id = req.body.movie_id;
   var user_id = req.body.user_id;
@@ -83,6 +85,7 @@ router.post('/movie/id', function(req, res){
 
   var movie_data = {};
   var movie_id = req.body.movie_id;
+  //Find movies based on ID
   Movie.findOne({_id: movie_id}, function(err,obj) {
     if(err){
       res.json({message: "fail"});
@@ -109,7 +112,7 @@ router.post('/movie/id', function(req, res){
 router.post('/account',function(req, res){
   var user_id = [];
   var name = req.body.name;
-  //Taking username and pushing ID
+  //Taking username and pushing ID back
   Account.findOne({username: name}, function(err,obj) {
     if(err){
       res.json({message: "fail"});
@@ -139,6 +142,7 @@ router.post('/account',function(req, res){
 router.post('/Favourites', function(req, res){
   var list_data = [];
   var user_id = req.body.user_id;
+  //Again finding user
   List.findOne({user_id: user_id}, function(err,obj) {
     if(err){
       res.json({message: "List ID failed"});
@@ -164,7 +168,7 @@ router.post('/account/user/name/id') , function(req, res){
 
 
 
-// takes list with ID
+// takes list using user_ID
 router.post('/list/id', function(req, res){
   var id = req.body.id;
   List.findOne({user_id: id}, function(error, obj) {
@@ -209,7 +213,7 @@ router.post('/Favourites/add/id', function(req, res){
     });
 });
 
-// Delete movies from list
+// Delete movies from list , Function is called from delet buttom
 router.post('/Favourites/delete/id', function(req, res){
   var list_id = req.body.id;
   var movie_id = req.body.movie_id;
@@ -222,7 +226,7 @@ router.post('/Favourites/delete/id', function(req, res){
     res.json({message: obj});
   });
 });
-// list all the comments made by the user
+// list all the comments made by the  Specific user
 router.post('/comment/list/user', function(req, res){
   var user_id = req.body.id;
   Comment.find({user_id: user_id},{_id: 1, text: 1, visible: 1}, function (err, data){
