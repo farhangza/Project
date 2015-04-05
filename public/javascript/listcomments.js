@@ -1,4 +1,4 @@
-
+//String c4movie = "";
 var listcomments = function(){
 
   var user_id = '';
@@ -33,11 +33,11 @@ var dynamic_comment = function(obj){
   $('.layoutfour').append("<div class='layoutfive'></div>");
   $('.layoutfive').append("<table class='tablecontainer'></table>");
   $('.tablecontainer').append("<tbody></tbody>");
-  $('.tablecontainer tbody').append("<tr><td><b> List of Comments</b></td></tr>");
+  $('.tablecontainer tbody').append("<tr><td><b> Comments Created by you </b></td></tr>");
   for(var i=0; i<obj.length; i++){
-    //alert(obj[i].movie);
-    //c4movie[i] = obj[i]._id;
-    $('.tablecontainer tr:last').after("<tr><td>"+obj[i].text+"***** In the following movie:*****" + "</td><td><a id='"+obj[i]._id+"'href='#' onclick='removecomment(id)'> Delete </a></td></tr>");
+    //alert(obj[i]);
+    //c4movie[i] = obj[i].movie.toString();
+    $('.tablecontainer tr:last').after("<tr><td>"+obj[i].text+"***** In the following movie:*****" +  "</td><td><a id='"+obj[i]._id+"'href='#' onclick='removecomment(id)'> Delete </a></td></tr>");
   }
 
 };

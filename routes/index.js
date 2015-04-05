@@ -13,7 +13,6 @@ router.get('/', function (req, res) {
 router.get('/register', function(req, res) {
     res.render('register', { });
 });
-
 router.post('/register', function(req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
@@ -94,11 +93,23 @@ router.post('/movie/id', function(req, res){
     console.log(movie_data);
     res.json(movie_data);
   });
+  /////////////////////////////
+  // var getId = function(){
+  //   var name = $('.username').text();
+  //   $.post('http://localhost:3000/account', {name: name}, function(data){
+  //     if(data){
+  //       user_ID = data.toString();
+  //     }
+  //   });
+  //
+  // }
+  ////////////////////////////
 });
 // Route for user ID
 router.post('/account',function(req, res){
   var user_id = [];
   var name = req.body.name;
+  //Taking username and pushing ID
   Account.findOne({username: name}, function(err,obj) {
     if(err){
       res.json({message: "fail"});
@@ -106,7 +117,24 @@ router.post('/account',function(req, res){
     user_id.push(obj._id) ;
     res.json(user_id);
   });
+
+
+
 });
+//////////////////////////////
+// router.post('/account2',function(req, res){
+//   var user_id = [];
+//   var name = req.body.name;
+//   Account.findOne({username: name}, function(err,obj) {
+//     if(err){
+//       res.json({message: "fail"});
+//     }
+//     user_id.push(obj._id) ;
+//     res.json(user_id);
+//   });
+// });
+//////////////////////////////
+
 // List of favourite movie for a specific user
 router.post('/Favourites', function(req, res){
   var list_data = [];
@@ -122,6 +150,21 @@ router.post('/Favourites', function(req, res){
     res.json(list_data);
   });
 });
+////////////////////////////////////
+//takes user id and returns user name
+router.post('/account/user/name/id') , function(req, res){
+  var user_id = req.body.user_id;
+
+  Account.findOne({_id: user_id}, function(err,obj){
+    if(err){ res.jason({message: "failed"});}
+    res.json(obj);
+  });
+
+
+
+
+
+// takes list with ID
 router.post('/list/id', function(req, res){
   var id = req.body.id;
   List.findOne({user_id: id}, function(error, obj) {

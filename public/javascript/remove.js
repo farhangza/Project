@@ -6,7 +6,7 @@ var deletelist = function(id){
   $.post('http://localhost:3000/Favourites/delete/id', {id: list_id, movie_id: movie_id}, function(data){
     if(data){
       favourite_movies = [];
-      alert("success");
+      //alert("success");
     }else{
       alert("failed")
     }
