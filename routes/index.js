@@ -150,7 +150,7 @@ router.post('/Favourites', function(req, res){
     res.json(list_data);
   });
 });
-////////////////////////////////////
+////////////////////////////////////*****************************************
 //takes user id and returns user name
 router.post('/account/user/name/id') , function(req, res){
   var user_id = req.body.user_id;
@@ -159,7 +159,7 @@ router.post('/account/user/name/id') , function(req, res){
     if(err){ res.jason({message: "failed"});}
     res.json(obj);
   });
-
+///////////////////////////////////******************************************
 
 
 

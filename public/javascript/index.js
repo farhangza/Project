@@ -29,9 +29,9 @@ var search = function (){
             alert(user_ID);
               if(data[1][i].visible == true && data[1][i].user_id.toString() == user_ID || data[1][i].visible == false){
                 $('.tablecontainer tr:last').after("<tr><td>"+ data[1][i].user_id+ "  "+ "   Says:    "+data[1][i].text+"</td></tr>");
-                //$('.tablecontainer tr:last').after("<tr><td>" + data[1][i].text+"</td></tr>");
-              //alert("if is fine");
               }
+              //$('.tablecontainer tr:last').after("<tr><td>" + data[1][i].text+"</td></tr>");
+            //alert("if is fine");
               //alert("out of if");
               //
               //
@@ -48,7 +48,7 @@ var search = function (){
     });
   }
 
-  // ////////////////////////
+  // ////////////////////////****************************
   // var getId = function(){
   //   alert(calling func);
   //   var name = $('.username').text();
@@ -56,4 +56,4 @@ var search = function (){
   //     if(data){user_ID = data.toString();}
   //   });
   // }
-  ///////////////////////
+  ///////////////////////***********************************
