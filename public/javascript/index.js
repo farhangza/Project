@@ -1,6 +1,14 @@
+var getId = function(){
+   //alert("calling func");
+  var name = $('.username').text();
+  $.post('http://localhost:3000/account', {name: name}, function(data){
+  if(data){user_ID = data.toString();}
+   });
+}
+
 var user_ID = "";
 var movie_data = {};
-var search = function (){
+var search = function () {
   // Remove the existing div elements
   $(".layoutfour" ).empty();
   $(".layoutthree").empty();
@@ -26,7 +34,8 @@ var search = function (){
             $('.tablecontainer tr:last').after("<tr><td><button id='add' type='submit' onclick='add()'> Add to my list</button><button id='comment' type='submit' onclick='comment()'> Comment </button></td></tr>");
           }
           for(var i=0;i<data[1].length;i++){
-            alert(user_ID);
+            alert(getId(data[1][i].user_id));
+
               if(data[1][i].visible == true && data[1][i].user_id.toString() == user_ID || data[1][i].visible == false){
                 $('.tablecontainer tr:last').after("<tr><td>"+ data[1][i].user_id+ "  "+ "   Says:    "+data[1][i].text+"</td></tr>");
               }
@@ -47,7 +56,6 @@ var search = function (){
         }
     });
   }
-
   // ////////////////////////****************************
   // var getId = function(){
   //   alert(calling func);

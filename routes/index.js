@@ -156,13 +156,13 @@ router.post('/Favourites', function(req, res){
 });
 ////////////////////////////////////*****************************************
 //takes user id and returns user name
-router.post('/account/user/name/id') , function(req, res){
-  var user_id = req.body.user_id;
-
-  Account.findOne({_id: user_id}, function(err,obj){
-    if(err){ res.jason({message: "failed"});}
-    res.json(obj);
-  });
+// router.post('/account/user/name/id') , function(req, res){
+//   var user_id = req.body.user_id;
+//
+//   Account.findOne({_id: user_id}, function(err,obj){
+//     if(err){ res.jason({message: "failed"});}
+//     res.json(obj);
+//   });
 ///////////////////////////////////******************************************
 
 
