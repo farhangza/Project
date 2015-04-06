@@ -1,4 +1,4 @@
-var getId = function(){
+var SendId = function(){
    //alert("calling func");
   var name = $('.username').text();
   $.post('http://localhost:3000/account', {name: name}, function(data){
@@ -33,8 +33,12 @@ var search = function () {
             $('.tablecontainer tr:last').after("<tr><td><input type='checkbox' name='scope' value='private'>Private</td></tr>");
             $('.tablecontainer tr:last').after("<tr><td><button id='add' type='submit' onclick='add()'> Add to my list</button><button id='comment' type='submit' onclick='comment()'> Comment </button></td></tr>");
           }
+
           for(var i=0;i<data[1].length;i++){
-            alert(getId(data[1][i].user_id));
+            //console.log(SendId(data[1][i+1].user_id));
+            SendId(data[1][i].user_id);
+            //putting Id to user_ID throw SendId function
+
 
               if(data[1][i].visible == true && data[1][i].user_id.toString() == user_ID || data[1][i].visible == false){
                 $('.tablecontainer tr:last').after("<tr><td>"+ data[1][i].user_id+ "  "+ "   Says:    "+data[1][i].text+"</td></tr>");
