@@ -39,7 +39,7 @@ var search = function () {
             SendId(data[1][i].user_id);
             //putting Id to user_ID throw SendId function
 
-
+            //alert($.post(data[1][i].user_id));
               if(data[1][i].visible == true && data[1][i].user_id.toString() == user_ID || data[1][i].visible == false){
                 $('.tablecontainer tr:last').after("<tr><td>"+ data[1][i].user_id+ "  "+ "   Says:    "+data[1][i].text+"</td></tr>");
               }

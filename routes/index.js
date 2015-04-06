@@ -156,12 +156,13 @@ router.post('/Favourites', function(req, res){
 });
 ////////////////////////////////////*****************************************
 //takes user id and returns user name
-// router.post('/account/user/name/id') , function(req, res){
-//    var user_id = req.body.user_id;
-//    Account.findOne({_id: user_id}, function(err,obj){
-//      if(err){ res.jason({message: "failed"});}
-//      res.json(obj);
-//    });
+router.post('/account/user/name/id') , function(req, res){
+   var user_id = req.body.user_id;
+   Account.findOne({_id: user_id}, function(err,obj){
+     if(err){ res.jason({message: "failed"});}
+     res.json(obj);
+   });
+ }
 ///////////////////////////////////******************************************
 
 
@@ -183,7 +184,7 @@ router.post('/list/id', function(req, res){
 
   });
 });
-
+//Adding movie to the favourits, Which include user_id , movie_id. Values are puted to an object and called back.
 router.post('/Favourites/add', function(req, res){
   var user_id = req.body.id;
   var movie_id = req.body.movie_id;
@@ -199,6 +200,8 @@ router.post('/Favourites/add', function(req, res){
     res.json({message: "adding successful"});
   });
 });
+
+
 router.post('/Favourites/add/id', function(req, res){
   console.log(req.body.id);
   console.log(req.body.movie_id);
