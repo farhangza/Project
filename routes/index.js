@@ -37,7 +37,7 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 });
 
-//Take care of movies (sent from java-script)
+//Take movie title and returns an object which contains comments
 router.post('/movie', function(req, res) {
   //Available variables
   var movie_data = [];
@@ -215,7 +215,7 @@ router.post('/Favourites/add/id', function(req, res){
     });
 });
 
-// Delete movies from list , Function is called from delet buttom
+// Delete movies from list , Function is called from delet buttom (deletes using movie_ID)
 router.post('/Favourites/delete/id', function(req, res){
   var list_id = req.body.id;
   var movie_id = req.body.movie_id;
